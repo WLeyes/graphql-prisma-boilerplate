@@ -1,7 +1,5 @@
 import { gql } from "apollo-boost";
 
-// Users
-
 const createUser = gql`
   mutation($data: CreateUserInput!) {
     createUser(data: $data) {
@@ -35,7 +33,7 @@ const login = gql`
 
 const getProfile = gql`
   query {
-    me() {
+    me {
       id
       name
       email

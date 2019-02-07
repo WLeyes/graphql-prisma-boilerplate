@@ -4,9 +4,9 @@ import prisma from "../../src/prisma";
 
 const userOne = {
   input: {
-    name: "[ DEV - user 1 ]",
-    email: "dev1@example.com",
-    password: bcrypt.hashSync("devPassword123")
+    name: "Jen",
+    email: "jen@example.com",
+    password: bcrypt.hashSync("Red098!@#$")
   },
   user: undefined,
   jwt: undefined
@@ -14,25 +14,25 @@ const userOne = {
 
 const userTwo = {
   input: {
-    name: "[ DEV - user 2 ]",
-    email: "dev2@example.com",
-    password: bcrypt.hashSync("adminPassword123")
+    name: "Jeff",
+    email: "jeff@example.com",
+    password: bcrypt.hashSync("PassForJeff")
   },
   user: undefined,
   jwt: undefined
 };
 
 const seedDatabase = async () => {
-  // Delete the test data
+  // Delete test data
   await prisma.mutation.deleteManyUsers();
 
-  // Create a new user
+  // Create user one
   userOne.user = await prisma.mutation.createUser({
     data: userOne.input
   });
   userOne.jwt = jwt.sign({ userId: userOne.user.id }, process.env.JWT_SECRET);
 
-  // Create second new user
+  // Create user two
   userTwo.user = await prisma.mutation.createUser({
     data: userTwo.input
   });

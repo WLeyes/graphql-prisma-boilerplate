@@ -7,36 +7,33 @@ type Query {
     skip: Int
     after: String
     orderBy: UserOrderByInput
-  ): [User]!
-  me(id: ID!): User!
+  ): [User!]!
+  me: User!
 }
 
 type Mutation {
-  login(data: LoginUserInput): AuthPayload!
-  createUser(data: CreateUserInput): AuthPayload!
-  updateUser(data: UpdateUserInput!): User!
+  createUser(data: CreateUserInput!): AuthPayload!
+  login(data: LoginUserInput!): AuthPayload!
   deleteUser: User!
+  updateUser(data: UpdateUserInput!): User!
 }
 
 # type Subscription {
 
 # }
 
-# Auth payload/token
 type AuthPayload {
   token: String!
   user: User!
 }
 
-#  Inputs
-
-input LoginUserInput {
+input CreateUserInput {
+  name: String!
   email: String!
   password: String!
 }
 
-input CreateUserInput {
-  name: String!
+input LoginUserInput {
   email: String!
   password: String!
 }
@@ -47,7 +44,6 @@ input UpdateUserInput {
   password: String
 }
 
-# User Schema
 type User {
   id: ID!
   name: String!
@@ -57,7 +53,6 @@ type User {
   createdAt: String!
 }
 
-# Subscription payloads
 enum MutationType {
   CREATED
   UPDATED

@@ -4,7 +4,6 @@ import prisma from "./prisma";
 
 const pubsub = new PubSub();
 
-// GraphQL-Yoga
 const server = new GraphQLServer({
   typeDefs: "./src/schema.graphql",
   resolvers,
