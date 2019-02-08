@@ -1,5 +1,7 @@
 # Config Settings
 
+note\* if this was created via `git clone` you need to delete the .git files and run a new `git init`
+
 ## Root Config Folder (need to create)
 
 this folder should contain 3 files: `dev.env`, `test.env` and `prod.env`
